@@ -1,0 +1,35 @@
+
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Liste Contact{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <h1>Liste des contacts</h1> 
+    <ul>
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in contact %}
+    <tr>
+      <th scope="row">{{c.nom}}</th>
+      <td>{{c.prenom}}</td>
+      <td><a class="btn btn-outline-dark mt-auto" href="/detail/{{ c.id }}">Plus d'infos</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    </ul>
+{% endblock %}

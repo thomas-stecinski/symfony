@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du contact{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('public/css/produit.css') }}">
+{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .center-text { text-align: center; }
+        .info-label { font-weight: bold; }
+    </style>
+
+    <!-- Product section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <h1 class="display-5 fw-bolder">{{ contact.nom|upper }} {{ contact.prenom }}</h1>
+            <div class="fs-5 mb-5 row">
+                <div class="mb-3 col-md-6">
+                    <p class="info-label">Nom:</p>
+                    <p>{{ contact.nom }}</p>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <p class="info-label">Prénom:</p>
+                    <p>{{ contact.prenom }}</p>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <p class="info-label">Email:</p>
+                    <p>{{ contact.email }}</p>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <p class="info-label">Numéro de téléphone:</p>
+                    <p>{{ contact.telephone }}</p>
+                </div>
+                <div class="mb-3 col-md-12">
+                    <form method="post" action="{{ path('app_delete_contact', {'id': contact.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cette annonce ?');">
+                        <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                            <i class="bi bi-trash"></i> Supprimer
+                        </button>
+                    </form>
+                    <form method="post" action="{{ path('app_edit_contact', {'id': contact.id}) }}">
+                        <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                            <i class="bi bi-pencil"></i> Modiier
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
